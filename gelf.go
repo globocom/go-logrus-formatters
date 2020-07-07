@@ -69,7 +69,7 @@ func (f gelfFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 		"version":       GelfVersion,
 		"short_message": entry.Message,
 		"level":         level,
-		"timestamp":     toTimestamp(entry.Time),
+		"@timestamp":     toTimestamp(entry.Time),
 		"host":          f.hostname,
 		"_level_name":   syslogNameMap[level],
 	}
