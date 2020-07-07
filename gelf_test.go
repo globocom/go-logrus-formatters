@@ -29,7 +29,6 @@ func TestGelfFormatter_Format(t *testing.T) {
 		"version":       GelfVersion,
 		"_level_name":   "INFORMATIONAL",
 		"_foo":          "bar",
-		"_line":         17.,
 	}
 	for key, expected := range expectations {
 		if message[key] != expected {
