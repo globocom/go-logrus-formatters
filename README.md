@@ -1,19 +1,11 @@
-# go-logrus-formatters [![Build Status](https://travis-ci.org/FabienM/go-logrus-formatters.svg?branch=master)](https://travis-ci.org/FabienM/go-logrus-formatters)
+# go-logrus-formatters 
 
-This repository contains a set of [logrus] formatters.
+This repository contains a set of [logrus] formatters using globo.com standards.
 
 ## Installation
 
-Since this project supports [semver], preferred way of installation is through [dep] or [gomodules]:
-
 ```
-dep ensure -add github.com/fabienm/go-logrus-formatters
-```
-
-or
-
-```
-go get github.com/fabienm/go-logrus-formatters
+go get github.com/globocom/go-logrus-formatters
 ```
 
 ## GELF formatter
@@ -24,7 +16,7 @@ Notable features:
 
 * Logrus levels are converted to syslog levels
 * Logrus entries times are converted to UNIX timestamps. 
-* Logrus entry fields are prefixed with `_`, excepted `version`, `host`, `short_message`, `full_message`, `timestamp` and `level`, allowing override.
+* Logrus entry fields are prefixed with `_`, excepted `version`, `host`, `short_message`, `full_message`, `@timestamp` and `level`, allowing override.
  
 ### Syslog level mapping
 
@@ -72,8 +64,8 @@ func main() {
 Output:
 
 ```json
-{"_animal":"walrus","_level_name":"INFORMATIONAL","_size":10,"host":"mylaptop","level":6,"short_message":"A group of walrus emerges from the ocean","timestamp":1522937330.7570872,"version":"1.1"}
-{"_some_env_var":"bar","_some_info":"foo","_user_id":9001,"_level_name":"CRITICAL","full_message":"Backtrace here\n\nmore stuff","host":"mylaptop","level":2,"short_message":"A short message that helps you identify what is going on","timestamp":1522937330.7573297,"version":"1.1"}
+{"_animal":"walrus","_level_name":"INFORMATIONAL","_size":10,"host":"mylaptop","level":6,"short_message":"A group of walrus emerges from the ocean","@timestamp":1522937330,"version":"1.1"}
+{"_some_env_var":"bar","_some_info":"foo","_user_id":9001,"_level_name":"CRITICAL","full_message":"Backtrace here\n\nmore stuff","host":"mylaptop","level":2,"short_message":"A short message that helps you identify what is going on","@timestamp":1522937330,"version":"1.1"}
 ```
 
 ## See also
