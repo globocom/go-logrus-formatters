@@ -48,7 +48,7 @@ func init() {
 		"host":          true,
 		"short_message": true,
 		"full_message":  true,
-		"timestamp":     true,
+		"@timestamp":    true,
 		"level":         true,
 	}
 }
@@ -87,10 +87,8 @@ func (f gelfFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	return append(message, '\n'), err
 }
 
-func toTimestamp(t time.Time) float64 {
-	nanosecond := float64(t.Nanosecond()) / 1e9
-	seconds := float64(t.Unix())
-	return seconds + nanosecond
+func toTimestamp(t time.Time) int64 {
+	return t.Unix()
 }
 
 func toSyslogLevel(level logrus.Level) syslog.Priority {
